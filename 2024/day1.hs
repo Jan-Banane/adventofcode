@@ -1,10 +1,10 @@
 import Data.List (transpose, sort)
 
-solvePart1 :: FilePath -> IO Int
-solvePart1 = solve part1
+solveDay1Part1 :: FilePath -> IO Int
+solveDay1Part1 = solve part1
 
-solvePart2 :: FilePath -> IO Int
-solvePart2 = solve part2 
+solveDay1Part2 :: FilePath -> IO Int
+solveDay1Part2 = solve part2 
 
 --Common Functions
 solve :: (String -> a) -> FilePath -> IO a
@@ -13,7 +13,7 @@ solve solver fileName = do
     return $ solver text
 
 prepareInput :: String -> ([Int], [Int])
-prepareInput input = seperate $ transpose $ map (map read  . words) $ lines input
+prepareInput = seperate . transpose . map (map read  . words) . lines
 
 seperate :: [[Int]] -> ([Int], [Int])
 seperate [listA, listB] = (listA,listB)
