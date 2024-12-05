@@ -1,13 +1,19 @@
 import Data.Maybe (catMaybes)
 
+solveDay4Part1 :: FilePath -> IO Int
+solveDay4Part1 = solve part1
+
+solveDay4Part2 :: FilePath -> IO Int
+solveDay4Part2 = solve part2 
+
 --Common Functions
 solve :: (String -> a) -> FilePath -> IO a
 solve solver fileName = do
     text <- readFile fileName
     return $ solver text
 
-mapOnEachElem :: ([String] -> (Int, Int) -> Int) -> [Char] -> Int
-mapOnEachElem func fileContent = sum $ map (func text) $ indexesToAllElem (length $ head text) (length text)
+sumMap :: ([String] -> (Int, Int) -> Int) -> [Char] -> Int
+sumMap func fileContent = sum $ map (func text) $ indexesToAllElem (length $ head text) (length text)
     where text = lines fileContent
 
 indexesToAllElem :: Int -> Int -> [(Int, Int)]
@@ -20,7 +26,7 @@ elementAt text (x,y)
 
 --Part 1
 part1 :: String -> Int
-part1 = mapOnEachElem countXmas
+part1 = sumMap countXmas
 
 countXmas :: [String] -> (Int, Int) -> Int
 countXmas list (x,y)
@@ -36,7 +42,7 @@ checkLineForMas text (x,y) (a,b) =
 
 --Part 2
 part2 :: String -> Int
-part2 = mapOnEachElem countXmas'
+part2 = sumMap countXmas'
 
 countXmas' :: [String] -> (Int, Int) -> Int
 countXmas' text (x,y)
