@@ -5,7 +5,6 @@ solve solver fileName = do
     text <- readFile fileName
     return $ solver text
 
-
 part1 input = length $ concatMap (filter (=='X')) $ moveUp (lines input) $ findGuard input
 
 moveUp :: [String] -> (Int,Int) -> [String]
