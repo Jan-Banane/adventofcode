@@ -1,6 +1,12 @@
 import Data.Char (digitToInt)
 import Data.Maybe
 
+solveDay9Part1 :: FilePath -> IO Int
+solveDay9Part1 = solve part1
+
+solveDay9Part2 :: FilePath -> IO Int
+solveDay9Part2 = solve part2
+
 --Common Funcs
 solve :: (String -> a) -> FilePath -> IO a
 solve solver fileName = do
