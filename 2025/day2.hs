@@ -17,9 +17,7 @@ parseInputs :: String -> [(Int, Int)]
 parseInputs = map (bimap (read . T.unpack) (read . T.unpack . T.tail) . T.break (=='-')) . T.split (==',') . T.pack
 
 createSequence :: Int -> Int -> [Int]
-createSequence min max
- | min >= max = [max]
- | otherwise = min:createSequence (min+1) max
+createSequence min max = [min..max]
 
 getInvalidsSum :: (String -> Bool) -> [Int] -> Int
 getInvalidsSum invalidator = sum . filter (invalidator . show)
